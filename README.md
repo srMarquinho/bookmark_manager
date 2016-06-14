@@ -1,4 +1,7 @@
-##User Stories
+## Instructions for Bookmark Manager
+```
+User Stories
+
 As a time-pressed user
 So I can quickly reach my favourite websites
 I want to see a list of links saved in the system
@@ -14,3 +17,4 @@ I want to be able to tag a link
 As a time-pressed user
 So I can locate links easily
 I want to be able to filter links by tag
+```
