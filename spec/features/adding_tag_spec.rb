@@ -10,4 +10,10 @@ feature 'adding a tag' do
     link = Link.first
     expect(link.tags.map(&:name)).to include('education')
   end
+
+  scenario 'I can add multiple tags to a new link' do
+    fill_in :url, with: 'www.makersacademy.com'
+    fill_in :title, with: 'MA'
+    fill_in :tags, with: 'education'
+  end
 end
