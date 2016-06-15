@@ -6,6 +6,7 @@ ruby '2.2.3'
 
 gem 'sinatra'
 gem 'rake'
+gem 'bcrypt'
 
 group :database do
   gem "data_mapper"
