@@ -1,19 +1,14 @@
 feature 'adding a tag' do
 
   scenario 'User can add a tag to a link' do
-    visit('/links/new')
-    fill_in :url, with: 'www.makersacademy.com'
-    fill_in :title, with: 'MA'
-    fill_in :tags, with: 'education'
-    click_button 'Add Link'
-
+    add_link_one_tag
     link = Link.first
     expect(link.tags.map(&:name)).to include('education')
   end
 
   scenario 'I can add multiple tags to a new link' do
-    fill_in :url, with: 'www.makersacademy.com'
-    fill_in :title, with: 'MA'
-    fill_in :tags, with: 'education'
+    add_link_two_tags
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('education', 'ruby')
   end
 end

@@ -4,16 +4,16 @@ source "https://rubygems.org"
 
 ruby '2.2.3'
 
+gem 'sinatra'
+gem 'rake'
+
+group :database do
+  gem "data_mapper"
+  gem "dm-postgres-adapter"
+end
+
 group :test do
   gem 'capybara'
   gem 'rspec'
   gem 'database_cleaner'
 end
-
-group :other_gems do
-  gem "data_mapper"
-  gem "dm-postgres-adapter"
-  gem 'sinatra'
-end
-
-
