@@ -1,34 +1,18 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
-require_relative 'data_mapper_setup'
 require 'sinatra/flash'
+require 'sinatra/partial'
+
+require_relative 'data_mapper_setup'
+
+require_relative 'server'
+require_relative 'controllers/links'
+require_relative 'controllers/tags'
+require_relative 'controllers/sessions'
+require_relative 'controllers/users'
 
 class BookmarkManager < Sinatra::Base
-
-  register Sinatra::Flash
-  use Rack::MethodOverride
-
-  enable :sessions
-  set :session_secret, 'super secret'
-
-  get '/links' do
-    @links = Link.all
-    erb(:'links/index')
-  end
-
-  get '/links/new' do
-    erb(:'links/new')
-  end
-
-  post '/links' do
-    link = Link.new(url: params[:url], title: params[:title])
-    params[:tags].split.each do |tag|
-      link.tags << Tag.first_or_create(name: tag)
-    end
-    link.save
-    redirect to('/links')
-  end
 
   get '/tags/:name' do
     tag = Tag.all(name: params[:name])
@@ -73,13 +57,6 @@ class BookmarkManager < Sinatra::Base
     session[:user_id] = nil
     flash.keep[:notice] = 'goodbye!'
     redirect to '/links'
-  end
-
-
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
   end
 
   # start the server if ruby file executed directly
