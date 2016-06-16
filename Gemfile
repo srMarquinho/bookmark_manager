@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-# A sample Gemfile
 source "https://rubygems.org"
 
 ruby '2.2.3'
@@ -7,8 +5,8 @@ ruby '2.2.3'
 gem 'sinatra'
 gem 'rake'
 gem 'bcrypt'
-gem 'EmojifyRspecFormatter'
 gem 'sinatra-flash'
+gem 'sinatra-partial'
 
 group :database do
   gem "data_mapper"
@@ -19,4 +17,5 @@ group :test do
   gem 'capybara'
   gem 'rspec'
   gem 'database_cleaner'
+  gem 'EmojifyRspecFormatter'
 end
