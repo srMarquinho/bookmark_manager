@@ -14,8 +14,9 @@ group :database do
 end
 
 group :test do
+  gem 'byebug'
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'rspec'
-  gem 'database_cleaner'
   gem 'EmojifyRspecFormatter'
 end
