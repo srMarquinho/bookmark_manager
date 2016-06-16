@@ -23,4 +23,8 @@ class BookmarkManager < Sinatra::Base
     @links = tag ? tag.links : []
     erb :'links/index'
   end
+
+  get '/users/recover' do
+    "Please enter your email address"
+  end
 end

@@ -30,6 +30,8 @@ feature 'User sign up' do
   end
 end
 
+
+
 feature 'User sign in' do
   let!(:user) do
     User.create(email: 'user@example.com',
@@ -41,6 +43,8 @@ feature 'User sign in' do
     sign_in(email: user.email,   password: user.password)
     expect(page).to have_content "Welcome, #{user.email}"
   end
+
+
 
   feature 'User signs out' do
     before(:each) do
@@ -55,5 +59,13 @@ feature 'User sign in' do
       expect(page).to have_content('goodbye!')
       expect(page).not_to have_content('Welcome, test@test.com')
     end
+  end
+
+  feature 'Resetting Password' do
+   scenario 'When I forget my password I can see a link to reset' do
+      visit '/sessions/new'
+      click_link 'I forgot my password'
+      expect(page).to have_content("Please enter your email address")
+   end
   end
 end
